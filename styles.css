@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: linear-gradient(252deg, #004AAD 0.69%, #012560 90.18%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: fixed;  /* Change from sticky to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    background-color: rgba(1, 37, 96, 0.8);
+    padding: 1rem 50px 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-logo {
+    width: 3.125rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.brand-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.brand-text:hover {
+    opacity: 0.8;
+}
+
+nav ul {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    margin: 0;        /* Changed from margin: 0 auto */
+    padding: 0;
+    margin-left: auto; /* This pushes the ul to the right */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.slideshow-container {
+    width: 1920px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding-top: 36.63%;
+    height: 0;
+    margin-top: 0;  /* Remove any top margin */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    border: none;
+    background-color: transparent;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+/* Page Indicators */
+.dot-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* Make slideshow responsive for smaller screens */
+@media screen and (max-width: 1920px) {
+    .slideshow-container {
+        width: 100%;
+    }
+}
+
+.banner {
+    width: 100%;
+    background: linear-gradient(252deg, #004AAD 0.69%, #012560 90.18%);
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 0;
+}
+
+.banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.banner h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.banner p {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.banner-image {
+    width: 1920px;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    height: auto;
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* Make banner image responsive */
+@media screen and (max-width: 1920px) {
+    .banner-image {
+        width: 100%;
+    }
+}
+
+.enroll-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+    margin-top: 1rem;
+}
+
+.enroll-button {
+    display: inline-block;
+    background-color: #ffde59;
+    color: #012560;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.enroll-button:hover {
+    background-color: #ffd700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.courses-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.courses-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.courses-slideshow {
+    width: calc(25rem + 10rem); /* Increased width to show previews */
+    height: 25rem;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+    padding: 0 50px;
+}
+
+.course-slide {
+    position: absolute;
+    top: 0;
+    left: 5rem; /* Center the active slide */
+    width: 25rem;
+    height: 25rem;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    transform: scale(0.8);
+}
+
+.course-slide.prev {
+    opacity: 0.3;
+    transform: translateX(-100%) scale(0.8);
+    z-index: 1;
+}
+
+.course-slide.next {
+    opacity: 0.3;
+    transform: translateX(100%) scale(0.8);
+    z-index: 1;
+}
+
+.course-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.course-slide img {
+    width: 25rem;
+    height: 25rem;
+    object-fit: contain;
+}
+
+.course-caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(1, 37, 96, 0.8);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.course-prev, .course-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    color: #012560;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    user-select: none;
+    z-index: 2;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-next {
+    right: -50px;
+}
+
+.course-prev {
+    left: -50px;
+}
+
+.course-dot-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.course-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.course-dot.active {
+    background-color: white;
+}
+
+.see-more-btn {
+    display: inline-block;
+    background-color: #ffde59;
+    color: #012560;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+    background-color: #ffd700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
