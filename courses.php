@@ -1,5 +1,10 @@
 <?php
-// require_once 'config.php';
+require_once 'config.php';
+
+function sanitize_input($data) {
+    return htmlspecialchars(trim($data));
+}
+
 // include 'header.php';
 
 $errors = [];
@@ -53,18 +58,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_course'])) {
 }
 
 // Fetch all courses with student count
-// try {
-//     $stmt = $pdo->query("
-//         SELECT c.id, c.course_name, COUNT(s.id) as student_count 
-//         FROM courses c 
-//         LEFT JOIN students s ON c.id = s.course_id 
-//         GROUP BY c.id, c.course_name 
-//         ORDER BY c.course_name ASC
-//     ");
-//     $courses = $stmt->fetchAll();
-// } catch(PDOException $e) {
-//     $errors[] = "Error fetching courses: " . $e->getMessage();
-// }
+try {
+    $stmt = $pdo->query("
+        SELECT c.id, c.course_name, COUNT(s.id) as student_count 
+        FROM courses c 
+        LEFT JOIN students s ON c.id = s.course_id 
+        GROUP BY c.id, c.course_name 
+        ORDER BY c.course_name ASC
+    ");
+    $courses = $stmt->fetchAll();
+} catch(PDOException $e) {
+    $errors[] = "Error fetching courses: " . $e->getMessage();
+}
+
 ?>
 
 <!DOCTYPE html>
